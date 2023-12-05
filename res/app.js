@@ -3,7 +3,7 @@ new Vue({
   data: {
     // Enter your Bing Maps API key here
     bingMapAPIKEY: "",
-    currentLanguage: "en",
+    currentLanguage: "en", //cn
     currentTexts: {},
     queryIp: "", //查询的IP地址
 
@@ -398,34 +398,28 @@ new Vue({
     isCardsCollapsed: false,
   },
   methods: {
-    isIP: function(input) {
-        var ipPattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-        result= ipPattern.test(input);
-        if(result){
-            console.log("输入的是一个IP地址");
-        }else{
-            console.log("输入的是一个域名");
-        }
-        return result
-      },
+    isIP: function (input) {
+      var ipPattern =
+        /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+      return ipPattern.test(input);
+    },
     searchIP: function () {
-        // 如果输入的是一个域名
-        if (!this.isIP(this.queryIp)) {
-          fetch("https://dns.google/resolve?name=" + this.queryIp + "&type=A")
-            .then(response => response.json())
-            .then(data => {
-              if (data.Answer) {
-                this.queryIp = data.Answer[0].data;
-                this.queryIpData();
-              } else {
-                console.log('无法获取 IP 地址');
-              }
-            })
-            .catch(error => console.error('Error:', error));
-        } else {
-          this.queryIpData();
-        }
-      },
+      if (!this.isIP(this.queryIp)) {
+        fetch("https://dns.google/resolve?name=" + this.queryIp + "&type=A")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.Answer) {
+              this.queryIp = data.Answer[0].data;
+              this.queryIpData();
+            } else {
+              console.log("无法获取 IP 地址");
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      } else {
+        this.queryIpData();
+      }
+    },
 
     queryIpData: function () {
       console.log(this.queryIp);
