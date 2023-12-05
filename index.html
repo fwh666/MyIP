@@ -40,7 +40,7 @@
         <span class="navbar-toggler-icon bg-transparent "></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav ">
+        <div class="navbar-nav ">        
           <a class="nav-link" :class="{ 'text-white jn-deactive': isDarkMode }" href="#scrollspyHeading1">{{currentTexts.nav.IPinfo}}</a>
           <a class="nav-link" :class="{ 'text-white jn-deactive': isDarkMode }" href="#scrollspyHeading2">{{currentTexts.nav.Connectivity}}</a>
           <a class="nav-link" :class="{ 'text-white jn-deactive': isDarkMode }" href="#scrollspyHeading3">{{currentTexts.nav.WebRTC}}</a>
@@ -71,6 +71,17 @@
     <div class="container mt-5 jn-container">
       <div data-bs-spy="scroll" data-bs-target="#navbar-top" data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true" class="rounded-2" tabindex="0">
+        <!-- IP Search -->
+        <div class="ip-data-section mb-4 ip-search">
+          <div class="d-flex justify-content-center mb-3">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="输入IP地址" id="ipInput" v-model="queryIp" @keyup.enter="searchIP()">
+              <button id="queryIp" class="btn btn-primary" type="button" @click="searchIP()">查询</button>
+            </div>
+          </div>
+        </div>
+        
+        
         <!-- IP Infos -->
         <div class="ip-data-section mb-4">
           <div class="row" :class="{'jn-title2': !isMobile,'jn-title':isMobile}">
