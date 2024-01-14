@@ -2,7 +2,7 @@ new Vue({
   el: "#app",
   data: {
     // Enter your Bing Maps API key here
-    bingMapAPIKEY: "",
+    bingMapAPIKEY: "AqMmY1GRzeUxm7YM3hjkFUZt0lL_oSbNpGgIx0aV1JYxMplKGmJvf3vz1YDXok3P",
     currentLanguage: "en", //cn
     currentTexts: {},
     queryIp: "", //查询的IP地址
@@ -17,6 +17,7 @@ new Vue({
         DNSLeakTest: "DNS Leak Test",
       },
       ipInfos: {
+        Query: "Query",
         id: "ipinfos",
         Title: "IP Infos",
         Notes:
@@ -94,6 +95,7 @@ new Vue({
         DNSLeakTest: "DNS 泄漏测试",
       },
       ipInfos: {
+        Query: "查询",
         id: "ipinfos",
         Title: "IP 信息",
         Notes:
@@ -948,7 +950,8 @@ new Vue({
     // 更新语言
     updateTexts() {
       this.currentTexts =
-        this.currentLanguage === "en" ? this.textEN : this.textCN;
+        // this.currentLanguage === "en" ? this.textEN : this.textCN;
+        this.currentLanguage === "en" ? this.textEN : this.textEN;
     },
     // 语言补丁，弥补初始化时的翻译延迟
     langPatch() {
