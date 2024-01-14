@@ -949,9 +949,10 @@ new Vue({
     },
     // 更新语言
     updateTexts() {
-      this.currentTexts =
-        // this.currentLanguage === "en" ? this.textEN : this.textCN;
-        this.currentLanguage === "en" ? this.textEN : this.textEN;
+      // this.currentTexts =
+      //   // this.currentLanguage === "en" ? this.textEN : this.textCN;
+      //   this.currentLanguage === "en" ? this.textEN : this.textEN;
+        this.currentTexts = this.textEN;
     },
     // 语言补丁，弥补初始化时的翻译延迟
     langPatch() {
